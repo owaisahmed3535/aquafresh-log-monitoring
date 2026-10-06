@@ -81,3 +81,109 @@ Task 1 completed:
 * CSV output generated
 * Pytest unit test added and passed
 * README documentation completed
+
+## Task 2 - Detection Rules and Alert Generator
+
+Task 2 adds simple detection rules and an alert generator to the project.
+
+### Task 2 Files
+
+* `rules.yaml` - YAML file containing detection rules.
+* `alert_generator.py` - Python script that reads `parsed_logs.csv` and applies the detection rules.
+* `alerts.json` - JSON output containing detected alerts.
+
+### Detection Rule Format
+
+Detection rules are stored in `rules.yaml`.
+
+Each rule contains:
+
+* `name` - Name of the detection rule.
+* `pattern` - Regular expression pattern matched against the `event` field.
+* `severity` - Alert severity level.
+* `description` - Description of the detected event.
+
+Example:
+
+```yaml
+rules:
+  - name: Failed SSH Login
+    pattern: "^Failed$"
+    severity: high
+    description: "A failed SSH login attempt was detected from {ip} for user {user}."
+```
+
+### Current Detection Rules
+
+The project currently contains two detection rules:
+
+1. **Failed SSH Login** - Detects failed SSH login events.
+2. **HTTP POST Request** - Detects HTTP POST request events.
+
+### How to Generate Alerts
+
+Make sure `parsed_logs.csv` exists, then run:
+
+```bash
+python3 alert_generator.py
+```
+
+The script reads `parsed_logs.csv`, loads the rules from `rules.yaml`, applies the regular expression patterns to the `event` field, and creates `alerts.json`.
+
+Expected output:
+
+```text
+Generated 4 alerts.
+Alerts saved to alerts.json
+```
+
+### Alert Output
+
+Each alert in `alerts.json` contains:
+
+* `timestamp` - Timestamp of the detected event.
+* `rule` - Name of the rule that matched.
+* `severity` - Severity assigned by the rule.
+* `description` - Description of the detected event.
+
+To view the alerts:
+
+```bash
+cat alerts.json
+```
+
+### How to Add a New Detection Rule
+
+Open `rules.yaml`:
+
+```bash
+nano rules.yaml
+```
+
+Add a new rule using the following format:
+
+```yaml
+  - name: Example Detection
+    pattern: "^Example$"
+    severity: low
+    description: "An example event was detected from {ip}."
+```
+
+The `pattern` is a regular expression matched against the `event` field in `parsed_logs.csv`.
+
+After adding a rule, run:
+
+```bash
+python3 alert_generator.py
+```
+
+The alert generator automatically applies all rules in `rules.yaml` to the parsed log data.
+
+### Task 2 Status
+
+* Detection rule schema created
+* Two detection rules added
+* Alert generator implemented
+* `alerts.json` generated successfully
+* Four matching alerts verified
+* README documentation updated

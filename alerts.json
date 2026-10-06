@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "Oct 04 09:18:45",
+    "rule": "Failed SSH Login",
+    "severity": "high",
+    "description": "A failed SSH login attempt was detected from 203.0.113.45 for user admin."
+  },
+  {
+    "timestamp": "Oct 04 09:25:33",
+    "rule": "Failed SSH Login",
+    "severity": "high",
+    "description": "A failed SSH login attempt was detected from 198.51.100.24 for user root."
+  },
+  {
+    "timestamp": "04/Oct/2026:09:31:45 +0500",
+    "rule": "HTTP POST Request",
+    "severity": "medium",
+    "description": "An HTTP POST request was detected from 203.0.113.45."
+  },
+  {
+    "timestamp": "04/Oct/2026:09:33:02 +0500",
+    "rule": "HTTP POST Request",
+    "severity": "medium",
+    "description": "An HTTP POST request was detected from 198.51.100.24."
+  }
+]

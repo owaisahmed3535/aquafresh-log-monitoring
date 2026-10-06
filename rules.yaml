@@ -1,0 +1,10 @@
+rules:
+  - name: Failed SSH Login
+    pattern: "^Failed$"
+    severity: high
+    description: "A failed SSH login attempt was detected from {ip} for user {user}."
+
+  - name: HTTP POST Request
+    pattern: "^POST$"
+    severity: medium
+    description: "An HTTP POST request was detected from {ip}."
