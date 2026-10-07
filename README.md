@@ -187,3 +187,15 @@ The alert generator automatically applies all rules in `rules.yaml` to the parse
 * `alerts.json` generated successfully
 * Four matching alerts verified
 * README documentation updated
+
+
+## Task 3 - Simulated Attack Logs and Detection Validation
+
+### Attack Simulation
+
+The `attack_generator.py` script appends simulated attack entries to the existing log files.
+
+Run the simulation with:
+
+```bash
+python3 attack_generator.py

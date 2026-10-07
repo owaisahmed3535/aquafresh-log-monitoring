@@ -3,3 +3,6 @@ Oct 04 09:18:45 server sshd[1208]: Failed password for admin from 203.0.113.45 p
 Oct 04 09:20:11 server sshd[1215]: Accepted password for ali from 192.168.1.110 port 51890 ssh2
 Oct 04 09:25:33 server sshd[1222]: Failed password for root from 198.51.100.24 port 33142 ssh2
 Oct 04 09:27:02 server sshd[1229]: Accepted password for sara from 192.168.1.115 port 52100 ssh2
+Oct 07 21:20:00 server sshd[1300]: Failed password for testuser1 from 203.0.113.50 port 45000 ssh2
+Oct 07 21:20:10 server sshd[1301]: Failed password for testuser2 from 203.0.113.51 port 45001 ssh2
+Oct 07 21:20:20 server sshd[1302]: Failed password for testuser3 from 203.0.113.52 port 45002 ssh2

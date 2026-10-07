@@ -12,6 +12,24 @@
     "description": "A failed SSH login attempt was detected from 198.51.100.24 for user root."
   },
   {
+    "timestamp": "Oct 07 21:20:00",
+    "rule": "Failed SSH Login",
+    "severity": "high",
+    "description": "A failed SSH login attempt was detected from 203.0.113.50 for user testuser1."
+  },
+  {
+    "timestamp": "Oct 07 21:20:10",
+    "rule": "Failed SSH Login",
+    "severity": "high",
+    "description": "A failed SSH login attempt was detected from 203.0.113.51 for user testuser2."
+  },
+  {
+    "timestamp": "Oct 07 21:20:20",
+    "rule": "Failed SSH Login",
+    "severity": "high",
+    "description": "A failed SSH login attempt was detected from 203.0.113.52 for user testuser3."
+  },
+  {
     "timestamp": "04/Oct/2026:09:31:45 +0500",
     "rule": "HTTP POST Request",
     "severity": "medium",
@@ -22,5 +40,23 @@
     "rule": "HTTP POST Request",
     "severity": "medium",
     "description": "An HTTP POST request was detected from 198.51.100.24."
+  },
+  {
+    "timestamp": "07/Oct/2026:21:20:30 +0500",
+    "rule": "HTTP POST Request",
+    "severity": "medium",
+    "description": "An HTTP POST request was detected from 203.0.113.50."
+  },
+  {
+    "timestamp": "07/Oct/2026:21:20:40 +0500",
+    "rule": "HTTP POST Request",
+    "severity": "medium",
+    "description": "An HTTP POST request was detected from 203.0.113.51."
+  },
+  {
+    "timestamp": "07/Oct/2026:21:20:50 +0500",
+    "rule": "HTTP POST Request",
+    "severity": "medium",
+    "description": "An HTTP POST request was detected from 203.0.113.52."
   }
 ]
