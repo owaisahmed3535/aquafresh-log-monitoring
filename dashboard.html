@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AquaFresh Log Monitoring Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    .status {
+      margin: 16px 0;
+      padding: 12px;
+      background: #fff;
+      border-radius: 6px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #00000012;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px;
+      border-bottom: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    th {
+      background: #e8edf2;
+    }
+
+    .high {
+      color: #b42318;
+      font-weight: bold;
+    }
+
+    .medium {
+      color: #9a6700;
+      font-weight: bold;
+    }
+
+    .error {
+      color: #b42318;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>AquaFresh Log Monitoring Dashboard</h1>
+    <p class="subtitle">Security alerts generated from authentication and web access logs.</p>
+
+    <div id="status" class="status" role="status">Loading alerts...</div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Alert Rule</th>
+            <th>Severity</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody id="alerts-table">
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    async function loadAlerts() {
+      const status = document.getElementById("status");
+      const tableBody = document.getElementById("alerts-table");
+
+      try {
+        const response = await fetch("./alerts.json");
+
+        if (!response.ok) {
+          throw new Error("Could not load alerts.json");
+        }
+
+        const alerts = await response.json();
+
+        if (!Array.isArray(alerts)) {
+          throw new Error("Alert data has an unexpected format");
+        }
+
+        tableBody.replaceChildren();
+
+        alerts.forEach((alert) => {
+          const row = document.createElement("tr");
+
+          const values = [
+            alert.timestamp,
+            alert.rule,
+            alert.severity,
+            alert.description
+          ];
+
+          values.forEach((value, index) => {
+            const cell = document.createElement("td");
+            cell.textContent = value ?? "";
+
+            if (index === 2) {
+              const severity = String(value ?? "").toLowerCase();
+              if (severity === "high" || severity === "medium") {
+                cell.className = severity;
+              }
+            }
+
+            row.appendChild(cell);
+          });
+
+          tableBody.appendChild(row);
+        });
+
+        status.textContent = `Loaded ${alerts.length} alert(s).`;
+      } catch (error) {
+        status.textContent =
+          "Unable to load alerts. Check that alerts.json is available.";
+        status.className = "status error";
+        console.error("Dashboard error:", error);
+      }
+    }
+
+    loadAlerts();
+  </script>
+</body>
+</html>
